@@ -14,7 +14,7 @@ def insert(list, n):
 # arguments
 # List: an ordered list with values of the location of the cutting points.
 def dist_values(lista :list):
-    # with n ordered points we can compute n-1 distances
+    # with n ordered points we can compute n-1 lengths
     size = len(lista); diff = np.zeros(size-1)
     for i in range(size):
         if(i>0):
@@ -37,7 +37,7 @@ repetitions = 100
 
 min = np.array([])
 max = np.array([])
-distances = []
+lengths = []
 defect = np.zeros(repetitions)
 
 for i in range(repetitions):
@@ -53,10 +53,10 @@ for i in range(repetitions):
     #index += 1
 
     #new_distance = alpha[ran] - alpha[ran-1]
-    #distances[i] = new_distance
-    distances = [];  distances = dist_values(alpha)  #dist_values could be optimized later.
-    min = np.append(min, np.min(distances))
-    max = np.append(max, np.max(distances))
+    #lengths[i] = new_distance
+    lengths = [];  lengths = dist_values(alpha)  #dist_values could be optimized later.
+    min = np.append(min, np.min(lengths))
+    max = np.append(max, np.max(lengths))
     defect[i] = max[i] - min[i]
 
 
@@ -75,23 +75,23 @@ plt.show()
 
 
 
-# distances plot
+# lengths plot
 x = np.linspace(0, repetitions, repetitions+1)
-y = distances
+y = lengths
 plt.scatter(x,y)
-plt.title("Distances vector plot")
+plt.title("Interval lengths plot")
 plt.xlabel("index")
 plt.ylabel("value")
 plt.show()
 
 
-# distances plot
+# minimum plot
 x = np.linspace(1, repetitions, repetitions)
 y = min
 plt.plot(x,y)
 #plt.show()
 
-# distances plot
+# maximum plot
 x = np.linspace(1, repetitions, repetitions)
 y = max
 plt.plot(x,y)
