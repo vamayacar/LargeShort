@@ -32,7 +32,7 @@ alpha = [0,length] # localization
 #beta  = [0]       # index
 
 # number of cuts we want to make (or how many times we want to run the process)
-repetitions = 100000
+repetitions = 100
 #index = 1
 
 min = np.array([])
